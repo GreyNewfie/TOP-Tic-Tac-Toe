@@ -1,0 +1,61 @@
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cell-size--: 150px;
+    --mark-size--: cal(var(--cell-size--) * .9);
+}
+
+body {
+    font-family: 'Press Start 2P', 'Roboto', 'Open Sana', sans-serif;
+}
+
+.gameboard {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+
+    font-size: 8em;
+}
+
+.gameboard-square {
+    height: var(--cell-size--);
+    width: var(--cell-size--);
+    border: 1px solid black;
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Remove outside borders from gameboard */
+.gameboard-square:first-child,
+.gameboard-square:nth-child(2),
+.gameboard-square:nth-child(3) {
+    border-top: none;
+}
+
+.gameboard-square:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.gameboard-square:nth-child(3n + 3) {
+    border-right: none;
+}
+
+.gameboard-square:nth-child(7),
+.gameboard-square:nth-child(8),
+.gameboard-square:last-child {
+    border-bottom: none;
+}
