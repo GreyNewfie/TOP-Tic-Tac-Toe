@@ -9,7 +9,7 @@
 
 :root {
     --cell-size--: 150px;
-    --mark-size--: cal(var(--cell-size--) * .9);
+    --mark-size--: calc(var(--cell-size--) * .9);
 }
 
 body {
@@ -34,9 +34,10 @@ body {
     width: var(--cell-size--);
     border: 1px solid black;
 
-    display: grid;
-    justify-items: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 /* Remove outside borders from gameboard */
@@ -58,4 +59,42 @@ body {
 .gameboard-square:nth-child(8),
 .gameboard-square:last-child {
     border-bottom: none;
+}
+
+/* Make X and O marks with CSS */
+.gameboard-square.x::before,
+.gameboard-square.x::after {
+    content: "";
+    width: calc(var(--mark-size--) * .15);
+    height: var(--mark-size--);
+    background-color: black;
+    rotate: 45degrees;
+}
+
+.gameboard-square.x::before {
+    rotate: 45deg;
+}
+
+.gameboard-square.x::after {
+    rotate: -45deg;
+    position: absolute;
+}
+
+.gameboard-square.o::before,
+.gameboard-square.o::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+}
+
+.gameboard-square.o::before {
+    width: var(--mark-size--);
+    height: var(--mark-size--);
+    background-color: black;
+}
+
+.gameboard-square.o::after {
+    width: calc(var(--mark-size--) * .7);
+    height: calc(var(--mark-size--) * .7);
+    background-color: white;
 }
