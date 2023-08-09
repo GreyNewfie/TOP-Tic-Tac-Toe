@@ -41,6 +41,11 @@ body {
     position: relative;
 }
 
+.gameboard-square.x,
+.gameboard-square.o {
+    cursor: not-allowed;
+}
+
 /* Remove outside borders from gameboard */
 .gameboard-square:first-child,
 .gameboard-square:nth-child(2),
@@ -70,7 +75,6 @@ body {
     height: var(--mark-size--);
     background-color: black;
     rotate: 45degrees;
-    cursor: not-allowed;
 }
 
 .gameboard-square.x::before {
