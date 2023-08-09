@@ -33,6 +33,7 @@ body {
     height: var(--cell-size--);
     width: var(--cell-size--);
     border: 1px solid black;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;
@@ -69,6 +70,7 @@ body {
     height: var(--mark-size--);
     background-color: black;
     rotate: 45degrees;
+    cursor: not-allowed;
 }
 
 .gameboard-square.x::before {
@@ -85,6 +87,7 @@ body {
     content: "";
     border-radius: 50%;
     position: absolute;
+    cursor: not-allowed;
 }
 
 .gameboard-square.o::before {
@@ -97,4 +100,9 @@ body {
     width: calc(var(--mark-size--) * .7);
     height: calc(var(--mark-size--) * .7);
     background-color: white;
+}
+
+.gameboard-square.x::before:hover,
+.gameboard-square.x::after:hover {
+    opacity: .7;
 }
