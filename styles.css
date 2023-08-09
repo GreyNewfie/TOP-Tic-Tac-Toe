@@ -69,7 +69,9 @@ body {
 
 /* Make X and O marks with CSS */
 .gameboard-square.x::before,
-.gameboard-square.x::after {
+.gameboard-square.x::after,
+.gameboard.x .gameboard-square:hover::before,
+.gameboard.x .gameboard-square:hover::after {
     content: "";
     width: calc(var(--mark-size--) * .15);
     height: var(--mark-size--);
@@ -77,36 +79,46 @@ body {
     rotate: 45degrees;
 }
 
-.gameboard-square.x::before {
+.gameboard-square.x::before,
+.gameboard.x .gameboard-square:hover::before {
     rotate: 45deg;
 }
 
-.gameboard-square.x::after {
+.gameboard-square.x::after,
+.gameboard.x .gameboard-square:hover::after {
     rotate: -45deg;
     position: absolute;
 }
 
+.gameboard.x .gameboard-square:hover::before,
+.gameboard.x .gameboard-square:hover::after {
+    background-color: silver;
+}
+
 .gameboard-square.o::before,
-.gameboard-square.o::after {
+.gameboard-square.o::after,
+.gameboard.o .gameboard-square:hover::before,
+.gameboard.o .gameboard-square:hover::after {
     content: "";
     border-radius: 50%;
     position: absolute;
     cursor: not-allowed;
 }
 
-.gameboard-square.o::before {
+.gameboard-square.o::before,
+.gameboard.o .gameboard-square:hover::before {
     width: var(--mark-size--);
     height: var(--mark-size--);
     background-color: black;
 }
 
-.gameboard-square.o::after {
+.gameboard-square.o::after,
+.gameboard.o .gameboard-square:hover::after {
     width: calc(var(--mark-size--) * .7);
     height: calc(var(--mark-size--) * .7);
     background-color: white;
 }
 
-.gameboard-square.x::before:hover,
-.gameboard-square.x::after:hover {
-    opacity: .7;
+.gameboard.o .gameboard-square:hover::before {
+    background-color: silver;
 }
