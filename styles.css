@@ -70,8 +70,8 @@ body {
 /* Make X and O marks with CSS */
 .gameboard-square.x::before,
 .gameboard-square.x::after,
-.gameboard.x .gameboard-square:hover::before,
-.gameboard.x .gameboard-square:hover::after {
+.gameboard.x .gameboard-square:not(.x, .o):hover::before,
+.gameboard.x .gameboard-square:not(.x, .o):hover::after {
     content: "";
     width: calc(var(--mark-size--) * .15);
     height: var(--mark-size--);
@@ -80,45 +80,44 @@ body {
 }
 
 .gameboard-square.x::before,
-.gameboard.x .gameboard-square:hover::before {
+.gameboard.x .gameboard-square:not(.x, .o):hover::before {
     rotate: 45deg;
 }
 
 .gameboard-square.x::after,
-.gameboard.x .gameboard-square:hover::after {
+.gameboard.x .gameboard-square:not(.x, .o):hover::after {
     rotate: -45deg;
     position: absolute;
 }
 
-.gameboard.x .gameboard-square:hover::before,
-.gameboard.x .gameboard-square:hover::after {
+.gameboard.x .gameboard-square:not(.x, .o):hover::before,
+.gameboard.x .gameboard-square:not(.x, .o):hover::after {
     background-color: silver;
 }
 
 .gameboard-square.o::before,
 .gameboard-square.o::after,
-.gameboard.o .gameboard-square:hover::before,
-.gameboard.o .gameboard-square:hover::after {
+.gameboard.o .gameboard-square:not(.x, .o):hover::before,
+.gameboard.o .gameboard-square:not(.x, .o):hover::after {
     content: "";
     border-radius: 50%;
     position: absolute;
-    cursor: not-allowed;
 }
 
 .gameboard-square.o::before,
-.gameboard.o .gameboard-square:hover::before {
+.gameboard.o .gameboard-square:not(.x, .o)::before {
     width: var(--mark-size--);
     height: var(--mark-size--);
     background-color: black;
 }
 
 .gameboard-square.o::after,
-.gameboard.o .gameboard-square:hover::after {
+.gameboard.o .gameboard-square:not(.x, .o)::after {
     width: calc(var(--mark-size--) * .7);
     height: calc(var(--mark-size--) * .7);
     background-color: white;
 }
 
-.gameboard.o .gameboard-square:hover::before {
+.gameboard.o .gameboard-square:not(.x, .o)::before {
     background-color: silver;
 }
