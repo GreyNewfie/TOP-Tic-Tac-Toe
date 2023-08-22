@@ -13,18 +13,18 @@
         createBoard: function() {
             let rows = 3;
             let columns = 3;
-            for (i = 0; i < this.rows; i++) {
+            for (let i = 0; i < this.rows; i++) {
                 this.gameBoard[i] = [];
-                for (j = 0; j < this.columns; j++) {
+                for (let j = 0; j < this.columns; j++) {
                     this.gameBoard[i].push('');
                 }
             }
         },
         //Goes through each column and row of the board array and adds an x in each cell
         updateBoard: function(marker) {
-            for (i = 0; i < this.rows; i++) {
+            for (let i = 0; i < this.rows; i++) {
                 this.gameBoard[i] = [];
-                for (j = 0; j < this.columns; j++) {
+                for (let j = 0; j < this.columns; j++) {
                     this.gameBoard[i].push(marker);
                 }
             }
@@ -37,8 +37,8 @@
         //Goes through the board array to render the board
         render: function () {
             this.gameSquares.forEach(square => {
-                for (i = 0; i < this.rows; i++) {
-                    for (j = 0; j < this.columns; j++) {
+                for (let i = 0; i < this.rows; i++) {
+                    for (let j = 0; j < this.columns; j++) {
                         square.classList.add(this.gameBoard[i][j])
                     }
                 }
