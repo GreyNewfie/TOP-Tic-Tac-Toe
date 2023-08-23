@@ -3,9 +3,19 @@
 (function() {
     const Gameboard = {
         gameBoard: [],
+        winningCombinations: [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ],
         init: function () {
             this.createBoard();
-            this.cachedDom();
+            this.cacheDom();
             this.render();
             this.bindEvents();
         },
@@ -30,7 +40,7 @@
             }
             console.log(this.gameBoard);
         },
-        cachedDom: function() {
+        cacheDom: function() {
             this.gameboard = document.getElementById("gameboard");
             this.gameSquares = document.querySelectorAll(".gameboard-square");
         },
@@ -48,6 +58,7 @@
             element.addEventListener('click', (event) => {
                 this.addMarker(event.target);
                 console.log(event);
+                Game.switchActivePlayer();
             }, { once: true });
             
         },
