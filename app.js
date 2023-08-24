@@ -58,7 +58,6 @@
         onClick: function(element) {
             element.addEventListener('click', (event) => {
                 this.addMarker(event.target);
-                console.log(event);
                 Game.switchActivePlayer();
             }, { once: true });
             
@@ -74,8 +73,6 @@
         addMarker: function(square) {
             const activePlayer = Game.getActivePlayer();
             square.classList.add(activePlayer.marker);
-            console.log(square);
-            console.log(activePlayer.marker);
         },
         checkWin: function(currentClass) {
             return this.winningCombinations.some( combination => {
