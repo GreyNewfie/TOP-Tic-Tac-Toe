@@ -42,7 +42,8 @@
         },
         cacheDom: function() {
             this.gameboard = document.getElementById("gameboard");
-            this.gameSquares = document.querySelectorAll(".gameboard-square");
+            this.gameSquares = document.querySelectorAll("[data-cell]");
+            console.log(this.gameSquares);
         },
         //Goes through the board array to render the board
         render: function () {
@@ -75,6 +76,13 @@
             square.classList.add(activePlayer.marker);
             console.log(square);
             console.log(activePlayer.marker);
+        },
+        checkWin: function(currentClass) {
+            return this.winningCombinations.some( combination => {
+                return combination.every( value => {
+                    return this.gameSquares[value].classList.contains(currentClass);
+                });
+            });
         }
     };
 
@@ -83,11 +91,13 @@
             this.activePlayer = players[0];
             Gameboard.setBoardHoverClass(this.activePlayer);
         },
-
         getActivePlayer: function() {
             return this.activePlayer;
         },
         switchActivePlayer: function() {
+           if (Gameboard.checkWin(this.activePlayer.marker)) {
+            alert("Player won!")
+           }
             this.activePlayer = this.activePlayer === players[0] ? players[1] : players[0];
             Gameboard.setBoardHoverClass(this.activePlayer);
         },
@@ -111,6 +121,7 @@
     }
         Gameboard.init();
         Game.startGame();
+        const gameWin = Gameboard.checkWin();
 })();
 
 
