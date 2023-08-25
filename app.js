@@ -82,10 +82,26 @@
                 });
             });
         },
-        displayWinningMessage: function(playerMarker) {
+        displayPlayerWins: function(playerMarker) {
             let marker = playerMarker.toUpperCase();
             this.winningMessageText.textContent = `Player ${marker} Wins!`
-            console.log(`Winning Message Text: ${this.winningMessageText}`);
+            this.winningMessage.classList.add('show');
+        },
+        checkDraw: function() {
+            let i = 0;
+            this.gameSquares.forEach( square => {
+                if (square.classList.contains('x') || square.classList.contains('o')) {
+                    i++;
+                }
+            });
+            if (i === 9) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        displayTie: function() {
+            this.winningMessageText.textContent = `It's a tie.`
             this.winningMessage.classList.add('show');
         }
     };
@@ -100,7 +116,9 @@
         },
         switchActivePlayer: function() {
            if (Gameboard.checkWin(this.activePlayer.marker)) {
-                Gameboard.displayWinningMessage(this.activePlayer.marker);
+                Gameboard.displayPlayerWins(this.activePlayer.marker);
+           } else if (Gameboard.checkDraw()) {
+                Gameboard.displayTie();
            }
             this.activePlayer = this.activePlayer === players[0] ? players[1] : players[0];
             Gameboard.setBoardHoverClass(this.activePlayer);
