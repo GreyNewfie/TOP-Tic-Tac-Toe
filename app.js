@@ -43,7 +43,8 @@
         cacheDom: function() {
             this.gameboard = document.getElementById("gameboard");
             this.gameSquares = document.querySelectorAll("[data-cell]");
-            console.log(this.gameSquares);
+            this.winningMessage = document.getElementById("winning-message");
+            this.winningMessageText = document.querySelector("[data-winning-message-text]");
         },
         //Goes through the board array to render the board
         render: function () {
@@ -80,6 +81,12 @@
                     return this.gameSquares[value].classList.contains(currentClass);
                 });
             });
+        },
+        displayWinningMessage: function(playerMarker) {
+            let marker = playerMarker.toUpperCase();
+            this.winningMessageText.textContent = `Player ${marker} Wins!`
+            console.log(`Winning Message Text: ${this.winningMessageText}`);
+            this.winningMessage.classList.add('show');
         }
     };
 
@@ -93,7 +100,7 @@
         },
         switchActivePlayer: function() {
            if (Gameboard.checkWin(this.activePlayer.marker)) {
-            alert("Player won!")
+                Gameboard.displayWinningMessage(this.activePlayer.marker);
            }
             this.activePlayer = this.activePlayer === players[0] ? players[1] : players[0];
             Gameboard.setBoardHoverClass(this.activePlayer);
